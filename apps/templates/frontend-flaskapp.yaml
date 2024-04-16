@@ -2,12 +2,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: frontend-flaskapp
-  # ArgoCD is in "default" namespace in this cluster
-  namespace: homelab
+  # ArgoCD is in "argocd" namespace in this cluster
+  namespace: argocd
   #finalizers:
   #- resources-finalizer.argocd.argoproj.io
 spec:
   destination:
+    # app will be in homelab namespace, in homelab project
     namespace: homelab
     server: {{ .Values.spec.destination.server }}
   project: homelab
