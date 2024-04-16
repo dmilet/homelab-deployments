@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: frontend-flaskapp
   # ArgoCD is in "default" namespace in this cluster
-  namespace: default
+  namespace: homelab
   #finalizers:
   #- resources-finalizer.argocd.argoproj.io
 spec:
