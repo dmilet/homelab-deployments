@@ -1,0 +1,5 @@
+replicaCount: 1
+image:
+  repository: davidmilet/homelab
+  tag: frontends-flaskappp-0.0.1
+  pullPolicy: IfNotPresent
