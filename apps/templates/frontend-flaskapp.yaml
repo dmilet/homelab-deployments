@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: homelab
     server: {{ .Values.spec.destination.server }}
-  project: default
+  project: homelab
   source:
     path: frontends/flaskapp
     repoURL: {{ .Values.spec.source.repoURL }}
