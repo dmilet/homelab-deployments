@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: frontends-flaskapp-git
+  # ArgoCD is in "argocd" namespace in this cluster
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    # app will be in prod namespace, in prod project
+    namespace: prod
+    server: {{ .Values.spec.destination.server }}
+  project: prod
+  sources:
+    - repoURL: {{ .Values.spec.source.repoURL }}
+      targetRevision: {{ .Values.spec.source.targetRevision }}
+      ref: values
+
+    - repoURL: {{ .Values.spec.source.repoURL }}
+      targetRevision: {{ .Values.spec.source.targetRevision }}
+      path: frontends/flaskapp
+      helm:
+        valueFiles: 
+          - $values/envs/common/frontend.yaml
+          - $values/envs/prod/frontend.yaml
+          - $values/values/prod/frontend.yaml
+      
