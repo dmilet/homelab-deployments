@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: frontends-flaskapp-oci
+  name: prod-frontends-flaskapp-oci
   # ArgoCD is in "argocd" namespace in this cluster
   namespace: argocd
   finalizers:

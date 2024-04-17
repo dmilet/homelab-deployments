@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: frontends-flaskapp-oci
+  name: homelab-frontends-flaskapp-oci
   # ArgoCD is in "argocd" namespace in this cluster
   namespace: argocd
   finalizers:
@@ -23,4 +23,6 @@ spec:
       chart: frontends-flaskapp
       helm:
         valueFiles: 
-          - $values/frontends/flaskapp/values.yaml
+          - $values/envs/common/frontend.yaml
+          - $values/envs/homelab/frontend.yaml
+          - $values/values/homelab/frontend.yaml

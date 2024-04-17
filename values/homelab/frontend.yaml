@@ -1,0 +1,4 @@
+image:
+  repository: davidmilet/homelab
+  tag: frontends-flaskappp-0.0.2
+  pullPolicy: Always
