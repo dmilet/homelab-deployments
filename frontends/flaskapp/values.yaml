@@ -1,5 +1,5 @@
 replicaCount: 1
 image:
   repository: davidmilet/homelab
-  tag: frontends-flaskappp-0.0.1
+  tag: frontends-flaskappp-0.0.2
   pullPolicy: Always
