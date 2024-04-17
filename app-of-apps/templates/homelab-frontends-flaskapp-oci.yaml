@@ -7,6 +7,9 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
+  syncPolicy:
+    automated:
+      prune: true
   destination:
     # app will be in homelab namespace, in homelab project
     namespace: homelab
