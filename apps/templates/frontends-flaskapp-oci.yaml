@@ -23,4 +23,5 @@ spec:
       targetRevision: 0.1.0
       chart: frontends-flaskapp
       helm:
-        valueFile: $values/values.yaml
+        valueFiles: 
+          - $values/values.yaml
