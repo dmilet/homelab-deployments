@@ -14,7 +14,6 @@ spec:
   project: homelab
   sources:
     - repoURL: {{ .Values.spec.source.repoURL }}
-      path: frontends/flaskapp
       targetRevision: {{ .Values.spec.source.targetRevision }}
       ref: values
 
@@ -24,4 +23,4 @@ spec:
       chart: frontends-flaskapp
       helm:
         valueFiles: 
-          - $values/values.yaml
+          - $values/frontends/flaskapp/values.yaml
