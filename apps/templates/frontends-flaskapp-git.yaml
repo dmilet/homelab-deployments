@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: frontends-flaskapp
+  name: frontends-flaskapp-git
   # ArgoCD is in "argocd" namespace in this cluster
   namespace: argocd
-  #finalizers:
-  #- resources-finalizer.argocd.argoproj.io
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     # app will be in homelab namespace, in homelab project
