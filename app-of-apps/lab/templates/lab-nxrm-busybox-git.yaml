@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prod-frontends-flaskapp-git
+  name: lab-nxrm-busybox-git
   # ArgoCD is in "argocd" namespace in this cluster
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    # app will be in prod namespace, in prod project
-    namespace: prod
+    # app will be in postgres namespace, in lab project
+    namespace: nxrm
     server: {{ .Values.spec.destination.server }}
-  project: prod
+  project: lab
   sources:
     - repoURL: {{ .Values.spec.source.repoURL }}
       targetRevision: {{ .Values.spec.source.targetRevision }}
@@ -19,10 +19,10 @@ spec:
 
     - repoURL: {{ .Values.spec.source.repoURL }}
       targetRevision: {{ .Values.spec.source.targetRevision }}
-      path: charts/frontends/flaskapp
+      path: charts/lab/busybox
       helm:
         valueFiles: 
-          - $values/envs/common/frontend.yaml
-          - $values/envs/prod/frontend.yaml
-          - $values/values/prod/frontend.yaml
-      
+          - $values/envs/common/busybox.yaml
+          #- $values/envs/lab/busybox.yaml
+          #- $values/values/lab/busybox.yaml
+
