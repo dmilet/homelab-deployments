@@ -1,30 +1,28 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: homelab-frontends-flaskapp-git
+  name: prod-frontends-flaskapp-oci
   # ArgoCD is in "argocd" namespace in this cluster
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  syncPolicy:
-    automated:
-      prune: true
   destination:
-    # app will be in homelab namespace, in homelab project
-    namespace: homelab
+    # app will be in prod namespace, in prod project
+    namespace: prod
     server: {{ .Values.spec.destination.server }}
-  project: homelab
+  project: prod
   sources:
     - repoURL: {{ .Values.spec.source.repoURL }}
       targetRevision: {{ .Values.spec.source.targetRevision }}
       ref: values
 
-    - repoURL: {{ .Values.spec.source.repoURL }}
-      targetRevision: {{ .Values.spec.source.targetRevision }}
-      path: frontends/flaskapp
+    - repoURL: registry-1.docker.io/davidmilet
+      path: frontends-flaskapp
+      targetRevision: 0.1.0
+      chart: frontends-flaskapp
       helm:
         valueFiles: 
           - $values/envs/common/frontend.yaml
-          - $values/envs/homelab/frontend.yaml
-          - $values/values/homelab/frontend.yaml
+          - $values/envs/prod/frontend.yaml
+          - $values/values/prod/frontend.yaml
