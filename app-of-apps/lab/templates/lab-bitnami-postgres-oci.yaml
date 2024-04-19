@@ -1,28 +1,28 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prod-frontends-flaskapp-oci
+  name: lab-bitnami-postgres-oci
   # ArgoCD is in "argocd" namespace in this cluster
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    # app will be in prod namespace, in prod project
-    namespace: prod
+    # app will be in postgres namespace, in lab project
+    namespace: postgres
     server: {{ .Values.spec.destination.server }}
-  project: prod
+  project: lab
   sources:
     - repoURL: {{ .Values.spec.source.repoURL }}
       targetRevision: {{ .Values.spec.source.targetRevision }}
       ref: values
 
-    - repoURL: registry-1.docker.io/davidmilet
-      path: frontends-flaskapp
-      targetRevision: 0.1.0
-      chart: frontends-flaskapp
+    - repoURL: registry-1.docker.io/bitnamicharts
+      path: bitnamicharts
+      targetRevision: 15.2.5
+      chart: postgresql
       helm:
         valueFiles: 
-          - $values/envs/common/frontend.yaml
-          - $values/envs/prod/frontend.yaml
-          - $values/values/prod/frontend.yaml
+          - $values/envs/common/postgres.yaml
+          - $values/envs/lab/postgres.yaml
+          - $values/values/lab/frontend.yaml
