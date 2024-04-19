@@ -25,4 +25,4 @@ spec:
         valueFiles: 
           - $values/envs/common/postgres.yaml
           - $values/envs/lab/postgres.yaml
-          - $values/values/lab/frontend.yaml
+          - $values/values/lab/postgres.yaml
