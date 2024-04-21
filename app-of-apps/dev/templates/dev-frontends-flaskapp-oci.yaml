@@ -20,7 +20,7 @@ spec:
       targetRevision: {{ .Values.spec.source.targetRevision }}
       ref: values
 
-    - repoURL: nexus
+    - repoURL: kali-pf37qnb7:444
       path: davidmilet/frontends-flaskapp
       targetRevision: '*'
       chart: frontends-flaskapp
