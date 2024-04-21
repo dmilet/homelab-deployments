@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ template "fullname" . }}
+  labels:
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: {{ template "fullname" . }}
+  serviceName: lab-nxrm-nexusrepo
+  template:
+    metadata:
+      labels:
+        app: {{ template "fullname" . }}
+      name: {{ template "fullname" . }}
+    spec:
+      containers:
+      - name: {{ .Chart.Name }}
+        image: sonatype/nexus3:3.67.1-java11
+        imagePullPolicy: IfNotPresent
+        # env:
+        # - name:
+        #   value: 
+        volumeMounts:
+        - mountPath: /nexus-data
+          name: lab-nxrm-nexusrepo-nexusdata
+        #command: ["tail", "-f", "/dev/null"]
+
+        livenessProbe:
+          exec:
+            command:
+            - cat
+            - /dev/null
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        readinessProbe:
+          exec:
+            command:
+            - cat
+            - /dev/null
+          initialDelaySeconds: 5
+          periodSeconds: 5
+  volumeClaimTemplates:
+    - apiVersion: v1
+      kind: PersistentVolumeClaim
+      metadata:
+        annotations:
+          volume.beta.kubernetes.io/storage-provisioner: microk8s.io/hostpath
+          volume.kubernetes.io/storage-provisioner: microk8s.io/hostpath
+        finalizers:
+        - kubernetes.io/pvc-protection
+        labels:
+          app.kubernetes.io/instance: {{ template "fullname" . }}
+          app.kubernetes.io/name: {{ template "fullname" . }}
+        name: lab-nxrm-nexusrepo-nexusdata
+        namespace: nxrm
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 2Gi
+        storageClassName: microk8s-custom-hostpath-pvc
