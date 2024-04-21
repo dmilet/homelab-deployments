@@ -20,8 +20,8 @@ spec:
       targetRevision: {{ .Values.spec.source.targetRevision }}
       ref: values
 
-    - repoURL: kali-pf37qnb7:444
-      path: davidmilet/frontends-flaskapp
+    - repoURL: registry-1.docker.io/davidmilet
+      path: frontends-flaskapp
       targetRevision: '*'
       chart: frontends-flaskapp
       helm:
