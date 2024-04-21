@@ -20,8 +20,8 @@ spec:
       targetRevision: {{ .Values.spec.source.targetRevision }}
       ref: values
 
-    - repoURL: registry-1.docker.io/davidmilet
-      path: frontends-flaskapp
+    - repoURL: nexus
+      path: davidmilet/frontends-flaskapp
       targetRevision: '*'
       chart: frontends-flaskapp
       helm:
