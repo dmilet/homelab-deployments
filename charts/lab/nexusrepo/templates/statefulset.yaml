@@ -23,8 +23,8 @@ spec:
         # env:
         # - name:
         #   value: 
-       ports:
-       - containerPort: 8081
+        ports:
+        - containerPort: 8081
           name: tcp-nexusrepo
           protocol: TCP
         volumeMounts:
