@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lab-nxrm-nexusrepo
+  labels:
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    app: {{ template "fullname" . }}
+  namespace: nexusrepo
+spec:
+  ports:
+    - name: tcp-nexus
+      nodePort: null
+      port: 8081
+      targetPort: tcp-nexus
+  selector:
+    app: {{ template "fullname" . }}
+  sessionAffinity: None
+  type: ClusterIP
