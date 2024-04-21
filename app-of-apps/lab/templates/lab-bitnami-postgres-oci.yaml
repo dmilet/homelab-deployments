@@ -20,9 +20,134 @@ spec:
       targetRevision: {{ .Values.spec.source.targetRevision }}
       ref: values
 
+    # https://bitnami.com/stack/postgresql/helm
     - repoURL: registry-1.docker.io/bitnamicharts
       path: bitnamicharts
+      targetRevision: 15.2.5apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: lab-bitnami-postgres-oci
+  # ArgoCD is in "argocd" namespace in this cluster
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    automated:
+      prune: true
+  destination:
+    # app will be in postgres namespace, in lab project
+    namespace: postgres
+    server: {{ .Values.spec.destination.server }}
+  project: lab
+  sources:
+    - repoURL: {{ .Values.spec.source.repoURL }}
+      targetRevision: {{ .Values.spec.source.targetRevision }}
+      ref: values
+
+    # https://bitnami.com/stack/postgresql/helm
+    - repoURL: registry-1.docker.io/bitnamicharts
+      path: bitnamichartsapiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: lab-bitnami-postgres-oci
+  # ArgoCD is in "argocd" namespace in this cluster
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    automated:
+      prune: true
+  destination:
+    # app will be in postgres namespace, in lab project
+    namespace: postgres
+    server: {{ .Values.spec.destination.server }}
+  project: lab
+  sources:
+    - repoURL: {{ .Values.spec.source.repoURL }}
+      targetRevision: {{ .Values.spec.source.targetRevision }}
+      ref: values
+
+    # https://bitnami.com/stack/postgresql/helm
+    - repoURL: registry-1.docker.io/bitnamicharts
+      path: bitnamicharts
+      targetReviapiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: lab-bitnami-postgres-oci
+  # ArgoCD is in "argocd" namespace in this cluster
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    automated:
+      prune: true
+  destination:
+    # app will be in postgres namespace, in lab project
+    namespace: postgres
+    server: {{ .Values.spec.destination.server }}
+  project: lab
+  sources:
+    - repoURL: {{ .Values.spec.source.repoURL }}
+      targetRevision: {{ .Values.spec.source.targetRevision }}
+      ref: values
+
+    # https://bitnami.com/stack/postgresql/helm
+    - repoURL: registry-1.docker.io/bitnamicharts
+      path: bitnamicharts
+      targetReviapiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: lab-bitnami-postgres-oci
+  # ArgoCD is in "argocd" namespace in this cluster
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    automated:
+      prune: true
+  destination:
+    # app will be in postgres namespace, in lab project
+    namespace: postgres
+    server: {{ .Values.spec.destination.server }}
+  project: lab
+  sources:
+    - repoURL: {{ .Values.spec.source.repoURL }}
+      targetRevision: {{ .Values.spec.source.targetRevision }}
+      ref: values
+
+    # https://bitnami.com/stack/postgresql/helm
+    - repoURL: registry-1.docker.io/bitnamicharts
+      path: bitnamicharts
+      targetRevision: *
+      chart: postgresql
+      helm:
+        valueFiles: 
+          - $values/envs/common/postgres.yaml
+          - $values/envs/lab/postgres.yaml
+          - $values/values/lab/postgres.yamlsion: 15.2.5
+      chart: postgresql
+      helm:
+        valueFiles: 
+          - $values/envs/common/postgres.yaml
+          - $values/envs/lab/postgres.yaml
+          - $values/values/lab/postgres.yamlsion: 15.2.5
+      chart: postgresql
+      helm:
+        valueFiles: 
+          - $values/envs/common/postgres.yaml
+          - $values/envs/lab/postgres.yaml
+          - $values/values/lab/postgres.yaml
       targetRevision: 15.2.5
+      chart: postgresql
+      helm:
+        valueFiles: 
+          - $values/envs/common/postgres.yaml
+          - $values/envs/lab/postgres.yaml
+          - $values/values/lab/postgres.yaml
       chart: postgresql
       helm:
         valueFiles: 
