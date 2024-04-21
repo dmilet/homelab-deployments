@@ -23,6 +23,10 @@ spec:
         # env:
         # - name:
         #   value: 
+       ports:
+       - containerPort: 8081
+          name: tcp-nexusrepo
+          protocol: TCP
         volumeMounts:
         - mountPath: /nexus-data
           name: lab-nxrm-nexusrepo-nexusdata

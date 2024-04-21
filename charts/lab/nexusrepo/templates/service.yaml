@@ -8,10 +8,10 @@ metadata:
   namespace: nxrm
 spec:
   ports:
-    - name: tcp-nexus
+    - name: tcp-nexusrepo
       nodePort: null
       port: 8081
-      targetPort: tcp-nexus
+      targetPort: tcp-nexusrepo
   selector:
     app: {{ template "fullname" . }}
   sessionAffinity: None
