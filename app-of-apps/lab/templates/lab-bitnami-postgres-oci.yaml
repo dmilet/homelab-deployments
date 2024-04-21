@@ -24,7 +24,7 @@ spec:
     - repoURL: registry-1.docker.io/bitnamicharts
       path: bitnamicharts
       #targetRevision: 15.2.5
-      targetRevision: *
+      targetRevision: '*'
       chart: postgresql
       helm:
         valueFiles: 
