@@ -22,7 +22,7 @@ spec:
 
     - repoURL: registry-1.docker.io/davidmilet
       path: frontends-flaskapp
-      targetRevision: 0.1.0
+      targetRevision: '*'
       chart: frontends-flaskapp
       helm:
         valueFiles: 
