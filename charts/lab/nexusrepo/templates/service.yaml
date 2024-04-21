@@ -5,7 +5,7 @@ metadata:
   labels:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     app: {{ template "fullname" . }}
-  namespace: nexusrepo
+  namespace: nxrm
 spec:
   ports:
     - name: tcp-nexus
