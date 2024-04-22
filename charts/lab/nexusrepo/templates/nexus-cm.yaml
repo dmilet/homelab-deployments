@@ -42,10 +42,10 @@ data:
     \                                                                                                                                                                                                                                           \n
     \ <New id=\"sslContextFactory\" class=\"org.eclipse.jetty.util.ssl.SslContextFactory$Server\">
     \                                                                                                                                                 \n
-    \   <Set name=\"KeyStorePath\">/nexus-data/ssl/keystore.jks</Set>                                                                                                                                                                  \n
+    \   <Set name=\"KeyStorePath\">/nexus-configs/keystore.jks</Set>                                                                                                                                                                  \n
     \   <Set name=\"KeyStorePassword\">password</Set>                                                                                                                                                                                             \n
     \   <Set name=\"KeyManagerPassword\">password</Set>                                                                                                                                                                                           \n
-    \   <Set name=\"TrustStorePath\">/nexus-data/ssl/keystore.jks</Set>                                                                                                                                                                \n
+    \   <Set name=\"TrustStorePath\">/nexus-configs/keystore.jks</Set>                                                                                                                                                                \n
     \   <Set name=\"TrustStorePassword\">password</Set>                                                                                                                                                                                           \n
     \   <Set name=\"EndpointIdentificationAlgorithm\"></Set>                                                                                                                                                                                      \n
     \   <Set name=\"NeedClientAuth\"><Property name=\"jetty.ssl.needClientAuth\" default=\"false\"/></Set>
@@ -110,7 +110,7 @@ data:
     application-port-ssl=8443
     # application-host=0.0.0.0
     # nexus-args=${jetty.etc}/jetty.xml,${jetty.etc}/jetty-http.xml,${jetty.etc}/jetty-requestlog.xml
-    nexus-args=${jetty.etc}/jetty.xml,${jetty.etc}/jetty-http.xml,/nexus-data/ssl/jetty-https.xml,${jetty.etc}/jetty-requestlog.xml
+    nexus-args=${jetty.etc}/jetty.xml,${jetty.etc}/jetty-http.xml,/nexus-configs/jetty-https.xml,${jetty.etc}/jetty-requestlog.xml
     # nexus-context-path=/${NEXUS_CONTEXT}
 
     # Nexus section
