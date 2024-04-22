@@ -58,13 +58,6 @@ spec:
       - name: nexus-cm
         configMap:
           name: nexus-cm
-          items:
-          - key: keystore.jks
-            path: ssl
-          - key: jetty-https.xml
-            path: ssl
-          - key: nexus.properties
-            path: etc
   volumeClaimTemplates:
     - apiVersion: v1
       kind: PersistentVolumeClaim
