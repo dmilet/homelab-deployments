@@ -27,10 +27,10 @@ spec:
         - containerPort: 8081
           name: tcp-nxrm
           protocol: TCP
-        - containerPort: 443
+        - containerPort: 8443
           name: tcp-nxrm-ssl
           protocol: TCP
-        - containerPort: 444
+        - containerPort: 8444
           name: tcp-nxrm-docker
           protocol: TCP
         volumeMounts:
