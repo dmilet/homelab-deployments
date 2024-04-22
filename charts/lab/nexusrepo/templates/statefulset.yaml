@@ -36,7 +36,7 @@ spec:
         volumeMounts:
         - mountPath: /nexus-data
           name: lab-nxrm-nexusrepo-nexusdata
-        - mountPath: /nexus-data
+        - mountPath: /nexus-data-configs
           name: nexus-cm
         #command: ["tail", "-f", "/dev/null"]
 
