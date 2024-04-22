@@ -14,11 +14,11 @@ spec:
       targetPort: tcp-nxrm
     - name: tcp-nexusrepo-ssl
       nodePort: null
-      port: 443
+      port: 8443
       targetPort: tcp-nxrm-ssl
     - name: tcp-nexusrepo-docker
       nodePort: null
-      port: 444
+      port: 8444
       targetPort: tcp-nxrm-docker
   selector:
     app: {{ template "fullname" . }}
