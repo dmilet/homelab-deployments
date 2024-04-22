@@ -1,0 +1,126 @@
+  # created  with
+  # keytool -genkey -keyalg RSA -keysize 2048 -validity 3650 \
+  # -alias nexus -keystore /nexus-data/ssl/keystore.jks \
+  # -dname "CN=lab-nxrm-nexusrepo.nxrm.svc.cluster.local" -ext "SAN=DNS:lab-nxrm-nexusrepo.nxrm.svc.cluster.local,IP:127.0.0.1"
+  # 
+#   kubectl create configmap nexus-cm -n nxrm --dry-run=client \
+#  --from-file=homelab-deployments/charts/lab/nexusrepo/configs \
+#  -o yaml > nexus-cm.yaml
+apiVersion: v1
+binaryData:
+  keystore.jks: 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
+data:
+  jetty-https.xml: "<?xml version=\"1.0\"?>\n<!DOCTYPE Configure PUBLIC \"-//Jetty//Configure//EN\"
+    \"http://www.eclipse.org/jetty/configure_9_0.dtd\">\n<Configure id=\"Server\"
+    class=\"org.eclipse.jetty.server.Server\">\n\n  <!--\n  ==== HTTPS ====\n  Set
+    the following inside nexus.properties:\n  application-port-ssl: the port to listen
+    for https connections\n  -->\n                                                                                                                                                                                                                                            \n
+    \ <Ref refid=\"httpConfig\">                                                                                                                                                                                                                  \n
+    \   <Set name=\"secureScheme\">https</Set>                                                                                                                                                                                                    \n
+    \   <Set name=\"securePort\"><Property name=\"application-port-ssl\" /></Set>
+    \                                                                                                                                                                  \n
+    \ </Ref>                                                                                                                                                                                                                                    \n
+    \                                                                                                                                                                                                                                           \n
+    \ <New id=\"httpsConfig\" class=\"org.eclipse.jetty.server.HttpConfiguration\">
+    \                                                                                                                                                                \n
+    \   <Arg><Ref refid=\"httpConfig\"/></Arg>                                                                                                                                                                                                    \n
+    \   <Call name=\"addCustomizer\">                                                                                                                                                                                                             \n
+    \     <Arg>                                                                                                                                                                                                                                 \n
+    \       <New id=\"secureRequestCustomizer\" class=\"org.eclipse.jetty.server.SecureRequestCustomizer\">
+    \                                                                                                                                        \n
+    \         <!-- 7776000 seconds = 90 days -->                                                                                                                                                                                                \n
+    \         <Set name=\"stsMaxAge\"><Property name=\"jetty.https.stsMaxAge\" default=\"7776000\"/></Set>
+    \                                                                                                                                           \n
+    \         <Set name=\"stsIncludeSubDomains\"><Property name=\"jetty.https.stsIncludeSubDomains\"
+    default=\"false\"/></Set>                                                                                                                        \n
+    \         <Set name=\"sniHostCheck\"><Property name=\"jetty.https.sniHostCheck\"
+    default=\"false\"/></Set>                                                                                                                                        \n
+    \       </New>                                                                                                                                                                                                                              \n
+    \     </Arg>                                                                                                                                                                                                                                \n
+    \   </Call>                                                                                                                                                                                                                                 \n
+    \ </New>                                                                                                                                                                                                                                    \n
+    \                                                                                                                                                                                                                                           \n
+    \ <New id=\"sslContextFactory\" class=\"org.eclipse.jetty.util.ssl.SslContextFactory$Server\">
+    \                                                                                                                                                 \n
+    \   <Set name=\"KeyStorePath\">/nexus-data/ssl/keystore.jks</Set>                                                                                                                                                                  \n
+    \   <Set name=\"KeyStorePassword\">password</Set>                                                                                                                                                                                             \n
+    \   <Set name=\"KeyManagerPassword\">password</Set>                                                                                                                                                                                           \n
+    \   <Set name=\"TrustStorePath\">/nexus-data/ssl/keystore.jks</Set>                                                                                                                                                                \n
+    \   <Set name=\"TrustStorePassword\">password</Set>                                                                                                                                                                                           \n
+    \   <Set name=\"EndpointIdentificationAlgorithm\"></Set>                                                                                                                                                                                      \n
+    \   <Set name=\"NeedClientAuth\"><Property name=\"jetty.ssl.needClientAuth\" default=\"false\"/></Set>
+    \                                                                                                                                           \n
+    \   <Set name=\"WantClientAuth\"><Property name=\"jetty.ssl.wantClientAuth\" default=\"false\"/></Set>
+    \                                                                                                                                           \n
+    \   <Set name=\"IncludeProtocols\">                                                                                                                                                                                                           \n
+    \     <Array type=\"java.lang.String\">                                                                                                                                                                                                       \n
+    \       <Item>TLSv1.2</Item>                                                                                                                                                                                                                \n
+    \     </Array>                                                                                                                                                                                                                              \n
+    \   </Set>                                                                                                                                                                                                                                  \n
+    \ </New>                                                                                                                                                                                                                                    \n
+    \                                                                                                                                                                                                                                           \n
+    \ <Call  name=\"addConnector\">                                                                                                                                                                                                               \n
+    \   <Arg>                                                                                                                                                                                                                                   \n
+    \     <New id=\"httpsConnector\" class=\"org.eclipse.jetty.server.ServerConnector\">
+    \                                                                                                                                                           \n
+    \       <Arg name=\"server\"><Ref refid=\"Server\" /></Arg>                                                                                                                                                                                     \n
+    \       <Arg name=\"acceptors\" type=\"int\"><Property name=\"jetty.https.acceptors\"
+    default=\"-1\"/></Arg>                                                                                                                                        \n
+    \       <Arg name=\"selectors\" type=\"int\"><Property name=\"jetty.https.selectors\"
+    default=\"-1\"/></Arg>                                                                                                                                        \n
+    \       <Arg name=\"factories\">                                                                                                                                                                                                              \n
+    \         <Array type=\"org.eclipse.jetty.server.ConnectionFactory\">                                                                                                                                                                         \n
+    \           <Item>                                                                                                                                                                                                                          \n
+    \             <New class=\"org.sonatype.nexus.bootstrap.jetty.InstrumentedConnectionFactory\">
+    \                                                                                                                                               \n
+    \               <Arg>                                                                                                                                                                                                                       \n
+    \                 <New class=\"org.eclipse.jetty.server.SslConnectionFactory\">
+    \                                                                                                                                                              \n
+    \                   <Arg name=\"next\">http/1.1</Arg>                                                                                                                                                                                         \n
+    \                   <Arg name=\"sslContextFactory\"><Ref refid=\"sslContextFactory\"/></Arg>
+    \                                                                                                                                                   \n
+    \                 </New>                                                                                                                                                                                                                    \n
+    \               </Arg>                                                                                                                                                                                                                      \n
+    \             </New>                                                                                                                                                                                                                        \n
+    \           </Item>                                                                                                                                                                                                                         \n
+    \           <Item>                                                                                                                                                                                                                          \n
+    \             <New class=\"org.eclipse.jetty.server.HttpConnectionFactory\">                                                                                                                                                                  \n
+    \               <Arg name=\"config\"><Ref refid=\"httpsConfig\" /></Arg>                                                                                                                                                                        \n
+    \             </New>                                                                                                                                                                                                                        \n
+    \           </Item>                                                                                                                                                                                                                         \n
+    \         </Array>                                                                                                                                                                                                                          \n
+    \       </Arg>                                                                                                                                                                                                                              \n
+    \                                                                                                                                                                                                                                           \n
+    \       <Set name=\"host\"><Property name=\"application-host\" /></Set>                                                                                                                                                                         \n
+    \       <Set name=\"port\"><Property name=\"application-port-ssl\" /></Set>                                                                                                                                                                     \n
+    \       <Set name=\"idleTimeout\"><Property name=\"jetty.https.timeout\" default=\"30000\"/></Set>
+    \                                                                                                                                               \n
+    \       <Set name=\"acceptorPriorityDelta\"><Property name=\"jetty.https.acceptorPriorityDelta\"
+    default=\"0\"/></Set>                                                                                                                            \n
+    \       <Set name=\"acceptQueueSize\"><Property name=\"jetty.https.acceptQueueSize\"
+    default=\"0\"/></Set>                                                                                                                                        \n
+    \     </New>                                                                                                                                                                                                                                \n
+    \   </Arg>                                                                                                                                                                                                                                  \n
+    \ </Call>                                                                                                                                                                                                                                   \n
+    \                                                                                                                                                                                                                                           \n</Configure>
+    \n"
+  nexus.properties: |
+    # Jetty section
+    # application-port=8081
+    application-port-ssl=443
+    # application-host=0.0.0.0
+    # nexus-args=${jetty.etc}/jetty.xml,${jetty.etc}/jetty-http.xml,${jetty.etc}/jetty-requestlog.xml
+    nexus-args=${jetty.etc}/jetty.xml,${jetty.etc}/jetty-http.xml,/nexus-data/ssl/jetty-https.xml,${jetty.etc}/jetty-requestlog.xml
+    # nexus-context-path=/${NEXUS_CONTEXT}
+
+    # Nexus section
+    # nexus-edition=nexus-pro-edition
+    # nexus-features=\
+    #  nexus-pro-feature
+
+    # nexus.hazelcast.discovery.isEnabled=true
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: nexus-cm
+  namespace: nxrm

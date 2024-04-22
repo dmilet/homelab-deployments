@@ -27,9 +27,17 @@ spec:
         - containerPort: 8081
           name: tcp-nexusrepo
           protocol: TCP
+        - containerPort: 443
+          name: tcp-nexusrepo-ssl
+          protocol: TCP
+        - containerPort: 444
+          name: tcp-nexusrepo-docker
+          protocol: TCP
         volumeMounts:
         - mountPath: /nexus-data
           name: lab-nxrm-nexusrepo-nexusdata
+        - mountPath: /nexus-data
+          name: nexus-cm
         #command: ["tail", "-f", "/dev/null"]
 
         livenessProbe:
@@ -46,6 +54,17 @@ spec:
             - /dev/null
           initialDelaySeconds: 5
           periodSeconds: 5
+      volumes:
+      - name: nexus-cm
+        configMap:
+          name: nexus-cm
+          items:
+          - key: keystore.jks
+            path: ssl
+          - key: jetty-https.xml
+            path: ssl
+          - key: nexus.properties
+            path: etc
   volumeClaimTemplates:
     - apiVersion: v1
       kind: PersistentVolumeClaim
