@@ -25,13 +25,13 @@ spec:
         #   value: 
         ports:
         - containerPort: 8081
-          name: tcp-nexusrepo
+          name: tcp-nxrm
           protocol: TCP
         - containerPort: 443
-          name: tcp-nexusrepo-ssl
+          name: tcp-nxrm-ssl
           protocol: TCP
         - containerPort: 444
-          name: tcp-nexusrepo-docker
+          name: tcp-nxrm-docker
           protocol: TCP
         volumeMounts:
         - mountPath: /nexus-data

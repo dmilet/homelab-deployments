@@ -11,7 +11,15 @@ spec:
     - name: tcp-nexusrepo
       nodePort: null
       port: 8081
-      targetPort: tcp-nexusrepo
+      targetPort: tcp-nxrm
+    - name: tcp-nexusrepo-ssl
+      nodePort: null
+      port: 443
+      targetPort: tcp-nxrm-ssl
+    - name: tcp-nexusrepo-docker
+      nodePort: null
+      port: 444
+      targetPort: tcp-nxrm-docker
   selector:
     app: {{ template "fullname" . }}
   sessionAffinity: None
