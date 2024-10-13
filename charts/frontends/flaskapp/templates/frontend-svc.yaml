@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: events-aggregator
+  namespace: dev
+spec:
+  internalTrafficPolicy: Cluster
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: dev-frontends-flaskapp-git-frontends-flaskapp
+    app: dev-frontends-flaskapp-oci-frontends-flaskapp
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
