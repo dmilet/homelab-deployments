@@ -32,4 +32,4 @@ jobs:
         run: helm registry login registry-1.docker.io -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Helm Push
-        run: helm push frontends-flaskapp-0.5.0.tgz oci://registry-1.docker.io/${{ secrets.DOCKERHUB_USERNAME }}
+        run: helm push frontends-flaskapp-0.6.0.tgz oci://registry-1.docker.io/${{ secrets.DOCKERHUB_USERNAME }}
