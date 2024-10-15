@@ -12,10 +12,10 @@ spec:
         repoURL: https://github.com/dmilet/homelab-deployments.git 
         revision: HEAD
         files:
-          - path: applicationsets/{{ .Values.spec.env }}/**/config.yaml
+          - path: applicationsets/dev/**/config.yaml
   template:
     metadata:
-      name: '{{.path.basename}}'
+      name: dev-frontends-flaskapp-oci
       namespace: argocd
       labels:
         swift.io/createdby: applicationset
@@ -25,10 +25,10 @@ spec:
         notifications.argoproj.io/subscribe.on-sync-succeeded.events-aggregator: ""
         notifications.argoproj.io/subscribe.on-sync-running.events-aggregator: ""
     spec:
-      project: '{{ .Values.spec.env }}'
+      project: 'dev'
       destination:
         server: '{{ .Values.spec.destination.server }}'
-        namespace: '{{ .Values.spec.env }}'
+        namespace: 'dev'
       syncPolicy:
         automated:
           selfHeal: true
@@ -50,5 +50,5 @@ spec:
           helm:
             valueFiles: 
               - $values/envs/common/frontend.yaml
-              - $values/envs/{{ .Values.spec.env }}/frontend.yaml
-              - $values/values/{{ .Values.spec.env }}/frontend.yaml
+              - $values/envs/dev/frontend.yaml
+              - $values/values/dev/frontend.yaml
