@@ -12,7 +12,7 @@ spec:
         repoURL: https://github.com/dmilet/homelab-deployments.git
         revision: HEAD
         files:
-          - path: applicationsets/dev/**/config.yaml
+          - path: applicationsets/dev/dev-frontends-flaskapp-oci/config.yaml
   template:
     metadata:
       name: dev-frontends-flaskapp-oci
