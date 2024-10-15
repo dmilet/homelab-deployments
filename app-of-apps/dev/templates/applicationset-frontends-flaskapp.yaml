@@ -15,7 +15,7 @@ spec:
           - path: applicationsets/{{ .Values.spec.env }}/**/config.yaml
   template:
     metadata:
-      name: {{.path.basename}}
+      name: '{{.path.basename}}'
       namespace: argocd
       labels:
         swift.io/createdby: applicationset
@@ -25,10 +25,10 @@ spec:
         notifications.argoproj.io/subscribe.on-sync-succeeded.events-aggregator: ""
         notifications.argoproj.io/subscribe.on-sync-running.events-aggregator: ""
     spec:
-      project: {{ .Values.spec.env }}
+      project: '{{ .Values.spec.env }}'
       destination:
-        server: {{ .Values.spec.destination.server }}
-        namespace: {{ .Values.spec.env }}
+        server: '{{ .Values.spec.destination.server }}'
+        namespace: '{{ .Values.spec.env }}'
       syncPolicy:
         automated:
           selfHeal: true
@@ -40,13 +40,13 @@ spec:
             factor: 2
             maxDuration: 5m0s
       sources:        
-        - repoURL: {{ .Values.spec.source.repoURL }}
-          targetRevision: {{ .Values.spec.source.targetRevision }}
+        - repoURL: '{{ .Values.spec.source.repoURL }}'
+          targetRevision: '{ .Values.spec.source.targetRevision }}'
           ref: values
 
         - repoURL: registry-1.docker.io/davidmilet
           targetRevision: '{{ .config.chart.version }}'
-          chart: {{ .config.chart.name }}
+          chart: '{{ .config.chart.name }}'
           helm:
             valueFiles: 
               - $values/envs/common/frontend.yaml
