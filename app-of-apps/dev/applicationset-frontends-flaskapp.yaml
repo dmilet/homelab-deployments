@@ -17,8 +17,6 @@ spec:
     metadata:
       name: dev-frontends-flaskapp-oci
       namespace: argocd
-      labels:
-        my.io/appversion: {{ .config.chart.version }}
       finalizers:
         - resources-finalizer.argocd.argoproj.io
       annotations:
