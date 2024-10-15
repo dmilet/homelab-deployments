@@ -18,8 +18,8 @@ spec:
       name: dev-frontends-flaskapp-oci
       namespace: argocd
       labels:
-        appversion: {{ .config.chart.version }}
-        deploymentid: {{ default "manual" .config.deploymentid }}
+        my.io/appversion: {{ .config.chart.version }}
+        my.io/deploymentid: {{ default "manual" .config.deploymentid }}
       finalizers:
         - resources-finalizer.argocd.argoproj.io
       annotations:
