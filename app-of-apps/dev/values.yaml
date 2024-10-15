@@ -1,7 +1,0 @@
-spec:
-  destination:
-    server: https://kubernetes.default.svc
-  source:
-    repoURL: https://github.com/dmilet/homelab-deployments.git
-    targetRevision: HEAD
-  env: dev

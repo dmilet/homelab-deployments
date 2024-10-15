@@ -16,15 +16,15 @@ spec:
   destination:
     # app will be in dev namespace, in dev project
     namespace: dev
-    server: {{ .Values.spec.destination.server }}
+    server: https://kubernetes.default.svc
   project: dev
   sources:
-    - repoURL: {{ .Values.spec.source.repoURL }}
-      targetRevision: {{ .Values.spec.source.targetRevision }}
+    - repoURL: https://github.com/dmilet/homelab-deployments.git
+      targetRevision: HEAD
       ref: values
 
-    - repoURL: {{ .Values.spec.source.repoURL }}
-      targetRevision: {{ .Values.spec.source.targetRevision }}
+    - repoURL: https://github.com/dmilet/homelab-deployments.git
+      targetRevision: HEAD
       path: charts/frontends/flaskapp
       helm:
         valueFiles: 

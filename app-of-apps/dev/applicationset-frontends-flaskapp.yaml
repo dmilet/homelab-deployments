@@ -12,7 +12,7 @@ spec:
         repoURL: https://github.com/dmilet/homelab-deployments.git
         revision: HEAD
         files:
-          - path: applicationsets/dev/dev-frontends-flaskapp-oci/config.yaml
+          - path: applicationsets/dev/**/config.yaml
   template:
     metadata:
       name: dev-frontends-flaskapp-oci
@@ -31,14 +31,14 @@ spec:
       destination:
         # app will be in dev namespace, in dev project
         namespace: dev
-        server: '{{ .Values.spec.destination.server }}'
+        server: https://kubernetes.default.svc
       project: dev
       sources:
-        - repoURL: '{{ .Values.spec.source.repoURL }}'
-          targetRevision: '{{ .Values.spec.source.targetRevision }}'
+        - repoURL: https://github.com/dmilet/homelab-deployments.git
+          targetRevision: HEAD
           ref: values
         - repoURL: registry-1.docker.io/davidmilet
-          targetRevision: '*'
+          targetRevision: '{{ .config.chart.version }}'
           chart: '{{ .config.chart.name }}'
           helm:
             valueFiles:
