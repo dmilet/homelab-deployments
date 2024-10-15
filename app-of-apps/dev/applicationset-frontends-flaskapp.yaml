@@ -19,7 +19,6 @@ spec:
       namespace: argocd
       labels:
         my.io/appversion: {{ .config.chart.version }}
-        my.io/deploymentid: {{ default "manual" .config.deploymentid }}
       finalizers:
         - resources-finalizer.argocd.argoproj.io
       annotations:
