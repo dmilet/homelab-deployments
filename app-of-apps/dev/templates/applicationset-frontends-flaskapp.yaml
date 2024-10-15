@@ -43,8 +43,8 @@ spec:
           targetRevision: { .Values.spec.source.targetRevision }}
           ref: values
         - repoURL: registry-1.docker.io/davidmilet
-          targetRevision: '{{ .config.chart.version }}'
-          chart: {{ .config.chart.name }}
+          targetRevision: '*'
+          chart: frontends-flaskapp
           helm:
             valueFiles: 
               - $values/envs/common/frontend.yaml
