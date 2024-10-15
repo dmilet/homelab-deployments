@@ -18,7 +18,8 @@ spec:
       name: dev-frontends-flaskapp-oci
       namespace: argocd
       labels:
-        swift.io/createdby: applicationset
+        appversion: {{ .config.chart.version }}
+        deploymentid: {{ default "manual" .config.deploymentid }}
       finalizers:
         - resources-finalizer.argocd.argoproj.io
       annotations:
@@ -38,8 +39,8 @@ spec:
           targetRevision: HEAD
           ref: values
         - repoURL: registry-1.docker.io/davidmilet
-          targetRevision: '{{ .config.chart.version }}'
-          chart: '{{ .config.chart.name }}'
+          targetRevision: {{ .config.chart.version }}
+          chart: {{ .config.chart.name }}
           helm:
             valueFiles:
               - $values/envs/common/frontend.yaml

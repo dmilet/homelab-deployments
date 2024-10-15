@@ -6,6 +6,11 @@ metadata:
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
+
+  labels:
+    appversion: HEAD
+    deploymentid: manual
+
   annotations:
     notifications.argoproj.io/subscribe.on-sync-succeeded.events-aggregator: ""
     notifications.argoproj.io/subscribe.on-sync-running.events-aggregator: ""
