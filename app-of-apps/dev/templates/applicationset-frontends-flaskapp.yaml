@@ -5,8 +5,8 @@ metadata:
   name: applicationset-frontends-flaskapp
   namespace: argocd
 spec:
-  #goTemplate: true
-  #goTemplateOptions: ["missingkey=error"]
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
   generators:
     - git:
         repoURL: https://github.com/dmilet/homelab-deployments.git 
@@ -38,8 +38,8 @@ spec:
           targetRevision: '{{ .Values.spec.source.targetRevision }}'
           ref: values
         - repoURL: registry-1.docker.io/davidmilet
-          targetRevision: '{{.config.chart.version}}'
-          chart: '{{.config.chart.name}}'
+          targetRevision: '*'
+          chart: frontends-flaskapp
           helm:
             valueFiles:
               - $values/envs/common/frontend.yaml
