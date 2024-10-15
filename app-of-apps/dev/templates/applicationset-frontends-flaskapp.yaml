@@ -27,26 +27,24 @@ spec:
     spec:
       project: 'dev'
       destination:
-        server: '{{ .Values.spec.destination.server }}'
+        server: {{ .Values.spec.destination.server }}
         namespace: 'dev'
       syncPolicy:
         automated:
           selfHeal: true
-          prune: true
-        retry:
+          prune: trueretry:
           limit: -1
           backoff:
             duration: 1m
             factor: 2
             maxDuration: 5m0s
       sources:        
-        - repoURL: '{{ .Values.spec.source.repoURL }}'
-          targetRevision: '{ .Values.spec.source.targetRevision }}'
+        - repoURL: {{ .Values.spec.source.repoURL }}
+          targetRevision: { .Values.spec.source.targetRevision }}
           ref: values
-
         - repoURL: registry-1.docker.io/davidmilet
           targetRevision: '{{ .config.chart.version }}'
-          chart: '{{ .config.chart.name }}'
+          chart: {{ .config.chart.name }}
           helm:
             valueFiles: 
               - $values/envs/common/frontend.yaml
