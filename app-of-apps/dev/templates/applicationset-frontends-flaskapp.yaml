@@ -39,7 +39,7 @@ spec:
           ref: values
         - repoURL: registry-1.docker.io/davidmilet
           targetRevision: '*'
-          chart: frontends-flaskapp
+          chart: '{{.config.chart.name}}'
           helm:
             valueFiles:
               - $values/envs/common/frontend.yaml

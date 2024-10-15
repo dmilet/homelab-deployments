@@ -1,3 +1,4 @@
+---
 config:
   chart:
     name: frontends-flaskapp
