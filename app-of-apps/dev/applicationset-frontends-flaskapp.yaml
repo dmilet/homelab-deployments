@@ -22,6 +22,9 @@ spec:
       annotations:
         notifications.argoproj.io/subscribe.on-sync-succeeded.events-aggregator: ""
         notifications.argoproj.io/subscribe.on-sync-running.events-aggregator: ""
+      labels:
+        appversion: '{{ .config.chart.version }}'
+        deploymentid: '{{ default "manual".config.chart.version }}'
     spec:
       syncPolicy:
         automated:
