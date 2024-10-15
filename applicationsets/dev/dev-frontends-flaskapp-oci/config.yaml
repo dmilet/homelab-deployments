@@ -3,5 +3,5 @@ config:
   chart:
     name: frontends-flaskapp
     version: '0.6.0'
-deploymentid: deployment12345
+#deploymentid: deployment12345
   
