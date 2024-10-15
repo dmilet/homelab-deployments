@@ -4,3 +4,4 @@ spec:
   source:
     repoURL: https://github.com/dmilet/homelab-deployments.git
     targetRevision: HEAD
+  env: dev
