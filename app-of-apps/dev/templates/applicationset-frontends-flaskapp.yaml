@@ -5,8 +5,8 @@ metadata:
   name: applicationset-frontends-flaskapp
   namespace: argocd
 spec:
-  goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
+  #goTemplate: true
+  #goTemplateOptions: ["missingkey=error"]
   generators:
     - git:
         repoURL: https://github.com/dmilet/homelab-deployments.git 
@@ -25,28 +25,23 @@ spec:
         notifications.argoproj.io/subscribe.on-sync-succeeded.events-aggregator: ""
         notifications.argoproj.io/subscribe.on-sync-running.events-aggregator: ""
     spec:
-      project: 'dev'
-      destination:
-        server: {{ .Values.spec.destination.server }}
-        namespace: 'dev'
       syncPolicy:
         automated:
-          selfHeal: true
-          prune: trueretry:
-          limit: -1
-          backoff:
-            duration: 1m
-            factor: 2
-            maxDuration: 5m0s
-      sources:        
-        - repoURL: {{ .Values.spec.source.repoURL }}
-          targetRevision: { .Values.spec.source.targetRevision }}
+          prune: true
+      destination:
+        # app will be in dev namespace, in dev project
+        namespace: dev
+        server: '{{ .Values.spec.destination.server }}'
+      project: dev
+      sources:
+        - repoURL: '{{ .Values.spec.source.repoURL }}'
+          targetRevision: '{{ .Values.spec.source.targetRevision }}'
           ref: values
         - repoURL: registry-1.docker.io/davidmilet
-          targetRevision: '*'
-          chart: frontends-flaskapp
+          targetRevision: '{{.config.chart.version}}'
+          chart: '{{.config.chart.name}}'
           helm:
-            valueFiles: 
+            valueFiles:
               - $values/envs/common/frontend.yaml
               - $values/envs/dev/frontend.yaml
               - $values/values/dev/frontend.yaml
