@@ -1,0 +1,171 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    notifications.argoproj.io/subscribe.on-sync-running.events-aggregator: ""
+    notifications.argoproj.io/subscribe.on-sync-succeeded.events-aggregator: ""
+    notified.notifications.argoproj.io: '{"on-sync-succeeded:[0].IwKhHw9Hu8IE3z5Y8CQE4vReLYs:events-aggregator:":1728965371}'
+  creationTimestamp: "2024-10-15T04:03:53Z"
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  generation: 17
+  labels:
+    appversion: 0.6.0
+    deploymentid: 0.6.0
+  name: dev-frontends-flaskapp-oci
+  namespace: argocd
+  ownerReferences:
+  - apiVersion: argoproj.io/v1alpha1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ApplicationSet
+    name: applicationset-frontends-flaskapp
+    uid: 72492044-3d50-48de-9552-ba1eaea5218b
+  resourceVersion: "374568"
+  uid: a064ae35-cecd-466a-8a11-912d36a163bd
+spec:
+  destination:
+    namespace: dev
+    server: https://kubernetes.default.svc
+  project: dev
+  sources:
+  - ref: values
+    repoURL: https://github.com/dmilet/homelab-deployments.git
+    targetRevision: HEAD
+  - chart: frontends-flaskapp
+    helm:
+      valueFiles:
+      - $values/envs/common/frontend.yaml
+      - $values/envs/dev/frontend.yaml
+      - $values/values/dev/frontend.yaml
+    repoURL: registry-1.docker.io/davidmilet
+    targetRevision: 0.6.0
+  syncPolicy:
+    automated:
+      prune: true
+status:
+  controllerNamespace: argocd
+  health:
+    status: Healthy
+  history:
+  - deployStartedAt: "2024-10-15T04:03:53Z"
+    deployedAt: "2024-10-15T04:03:54Z"
+    id: 0
+    initiatedBy:
+      automated: true
+    revisions:
+    - 73a0e71469af16b20dd9d55ff009255b01bcc91a
+    - 0.6.0
+    source:
+      repoURL: ""
+    sources:
+    - ref: values
+      repoURL: https://github.com/dmilet/homelab-deployments.git
+      targetRevision: HEAD
+    - chart: frontends-flaskapp
+      helm:
+        valueFiles:
+        - $values/envs/common/frontend.yaml
+        - $values/envs/dev/frontend.yaml
+        - $values/values/dev/frontend.yaml
+      repoURL: registry-1.docker.io/davidmilet
+      targetRevision: 0.6.0
+  operationState:
+    finishedAt: "2024-10-15T04:03:54Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        automated: true
+      retry:
+        limit: 5
+      sync:
+        prune: true
+        revisions:
+        - 73a0e71469af16b20dd9d55ff009255b01bcc91a
+        - 0.6.0
+    phase: Succeeded
+    startedAt: "2024-10-15T04:03:53Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/dev-frontends-flaskapp-oci-frontends-flaskapp-svc created
+        name: dev-frontends-flaskapp-oci-frontends-flaskapp-svc
+        namespace: dev
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/dev-frontends-flaskapp-oci-frontends-flaskapp created
+        name: dev-frontends-flaskapp-oci-frontends-flaskapp
+        namespace: dev
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: ""
+      revisions:
+      - 73a0e71469af16b20dd9d55ff009255b01bcc91a
+      - 0.6.0
+      source:
+        repoURL: ""
+      sources:
+      - ref: values
+        repoURL: https://github.com/dmilet/homelab-deployments.git
+        targetRevision: HEAD
+      - chart: frontends-flaskapp
+        helm:
+          valueFiles:
+          - $values/envs/common/frontend.yaml
+          - $values/envs/dev/frontend.yaml
+          - $values/values/dev/frontend.yaml
+        repoURL: registry-1.docker.io/davidmilet
+        targetRevision: 0.6.0
+  reconciledAt: "2024-10-15T04:26:29Z"
+  resources:
+  - health:
+      status: Healthy
+    kind: Service
+    name: dev-frontends-flaskapp-oci-frontends-flaskapp-svc
+    namespace: dev
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: dev-frontends-flaskapp-oci-frontends-flaskapp
+    namespace: dev
+    status: Synced
+    version: v1
+  sourceTypes:
+  - ""
+  - Helm
+  summary:
+    images:
+    - davidmilet/homelab:frontends-flaskappp-0.0.8
+  sync:
+    comparedTo:
+      destination:
+        namespace: dev
+        server: https://kubernetes.default.svc
+      source:
+        repoURL: ""
+      sources:
+      - ref: values
+        repoURL: https://github.com/dmilet/homelab-deployments.git
+        targetRevision: HEAD
+      - chart: frontends-flaskapp
+        helm:
+          valueFiles:
+          - $values/envs/common/frontend.yaml
+          - $values/envs/dev/frontend.yaml
+          - $values/values/dev/frontend.yaml
+        repoURL: registry-1.docker.io/davidmilet
+        targetRevision: 0.6.0
+    revisions:
+    - a1abaf6e0d3f7027cc83c88441c5768b9e4ebe2c
+    - 0.6.0
+    status: Synced
