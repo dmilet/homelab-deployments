@@ -23,7 +23,9 @@ spec:
         notifications.argoproj.io/subscribe.on-sync-succeeded.events-aggregator: ""
         notifications.argoproj.io/subscribe.on-sync-running.events-aggregator: ""
       labels:
+        swift.io/appversion: '{{ .config.chart.version }}'
         appversion: '{{ .config.chart.version }}'
+        swift.io/deploymentid: '{{ default "manual" .deploymentid }}'
         deploymentid: '{{ default "manual" .deploymentid }}'
     spec:
       syncPolicy:
